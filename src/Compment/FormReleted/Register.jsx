@@ -1,13 +1,16 @@
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../AuthProvider/AuthProvider';
+import Swal from 'sweetalert2';
 
 const Register = () => {
   const { hanidleClickCreat, updataUserProfile, handileLogoutUsr } =
     useContext(AuthContext);
   const locations = useLocation();
   const Navigate = useNavigate();
+  const [errorMassge, setErrorMassage] = useState(null);
+
   const {
     register,
     handleSubmit,
@@ -17,10 +20,23 @@ const Register = () => {
   const onSubmit = data => {
     const { fullName, password, email, photo } = data;
     console.log(fullName);
-
+    if (password.length < 6) {
+      setErrorMassage('Password should be at least 6 characters');
+    } else if (!/[A-Z]/.test(password)) {
+      setErrorMassage('Password does not have at least one uppercase letter');
+    } else if (!/[a-z]/.test(password)) {
+      setErrorMassage('Password does not have at least one lowercase letter');
+    } else {
+      setErrorMassage(null);
+    }
     hanidleClickCreat(email, password)
       .then(result => {
         if (result.user) {
+          Swal.fire({
+            title: 'Good job!',
+            text: 'You have successfully register!',
+            icon: 'success',
+          });
           handileLogoutUsr();
         }
         updataUserProfile(fullName, photo).then(() => {
@@ -33,9 +49,9 @@ const Register = () => {
   };
   return (
     <div>
-      <div className=" min-h-screen ">
+      <div className=" min-h-screen my-[50px] ">
         <div className=" hero-content flex-col lg:flex-row-reverse">
-          <div className=" card shrink-0 w-[40%] shadow-2xl bg-base-100">
+          <div className=" card shrink-0 w-full md:w-[50%] lg:w-[40%] shadow-2xl bg-base-100">
             <form
               onSubmit={handleSubmit(onSubmit)}
               className="w-full card-body border-2 border-[#FF497C] rounded-lg"
@@ -90,11 +106,12 @@ const Register = () => {
                   required
                   {...register('password', { required: true })}
                 />
-                <label className="label">
-                  <a href="#" className="label-text-alt link link-hover">
-                    Forgot password?
-                  </a>
-                </label>
+                <h2
+                  className="text-red-600 font-semibold mt-2
+                "
+                >
+                  {errorMassge}
+                </h2>
               </div>
               <div className="form-control mt-6">
                 <input

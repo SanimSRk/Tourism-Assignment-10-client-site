@@ -61,7 +61,10 @@ const Naver = () => {
       });
   };
   return (
-    <div className="w-full fixed z-10 shadow-lg">
+    <div
+      className="w-full 
+     fixed z-10 shadow-lg"
+    >
       <div className="navbar px-[6%] mx-auto bg-base-100">
         <div className="navbar-start">
           <div className="dropdown">

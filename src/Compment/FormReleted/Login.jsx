@@ -1,11 +1,15 @@
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { FaGithub } from 'react-icons/fa';
 import { FcGoogle } from 'react-icons/fc';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../AuthProvider/AuthProvider';
+import Swal from 'sweetalert2';
 const Login = () => {
   const { handileLogin } = useContext(AuthContext);
+  const [errorMassge, setErrorMassage] = useState(null);
+  const Navigate = useNavigate();
+  const location = useLocation();
   const {
     register,
     handleSubmit,
@@ -18,17 +22,27 @@ const Login = () => {
     handileLogin(email, password)
       .then(result => {
         console.log(result.user);
+        Swal.fire({
+          title: 'Good job!',
+          text: 'You have successfully Login!',
+          icon: 'success',
+        });
+        Navigate(location?.state || '/');
+        setErrorMassage(null);
       })
       .catch(error => {
         console.log(error);
+        if (error) {
+          setErrorMassage('Incorrect email or password. Please try again');
+        }
       });
   };
 
   return (
     <div>
-      <div className="hero min-h-screen ">
+      <div className="hero min-h-screen my-[50px]">
         <div className="w-full hero-content flex-col lg:flex-row-reverse">
-          <div className=" border-2 border-[#FF497C] rounded-lg  card shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
+          <div className=" border-2 border-[#FF497C] rounded-lg  card shrink-0 w-full max-w-md shadow-2xl bg-base-100">
             <form onSubmit={handleSubmit(onSubmit)} className="card-body ">
               <h2 className="text-3xl font-bold text-[#FF497C] text-center">
                 Login Now
@@ -62,6 +76,9 @@ const Login = () => {
                   </a>
                 </label>
               </div>
+
+              <h2 className="text-red-600 font-semibold"> {errorMassge}</h2>
+
               <div className="form-control mt-4">
                 <button className="btn bg-[#FF497C] text-white">Login</button>
               </div>
