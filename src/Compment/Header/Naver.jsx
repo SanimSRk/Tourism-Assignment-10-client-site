@@ -17,6 +17,37 @@ const Naver = () => {
       >
         <span className="font-semibold">Home</span>
       </NavLink>
+      <NavLink
+        to="/allTurist"
+        className={({ isActive }) =>
+          isActive
+            ? 'text-[#FF497C] border-b-4 border-[#FF497C]'
+            : 'hover:text-[#FF497C]'
+        }
+      >
+        <span className="font-semibold">All Tourists Spot</span>
+      </NavLink>
+      <NavLink
+        to="/addTurist"
+        className={({ isActive }) =>
+          isActive
+            ? 'text-[#FF497C] border-b-4 border-[#FF497C]'
+            : 'hover:text-[#FF497C]'
+        }
+      >
+        <span className="font-semibold">Add Tourists Spot</span>
+      </NavLink>
+
+      <NavLink
+        to="/myList"
+        className={({ isActive }) =>
+          isActive
+            ? 'text-[#FF497C] border-b-4 border-[#FF497C]'
+            : 'hover:text-[#FF497C]'
+        }
+      >
+        <span className="font-semibold"> My List</span>
+      </NavLink>
     </>
   );
 
@@ -52,18 +83,19 @@ const Naver = () => {
             </div>
             <ul
               tabIndex={0}
-              className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
+              className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52 gap-4 "
             >
               {navlinks}
             </ul>
           </div>
-          <a className="btn text-2xl gap-0 font-bold">
+          <img className="w-[60px]" src="/public/beach.jpg" alt="" />
+          <a className=" text-2xl gap-0 font-bold">
             {' '}
             Tour<span className="text-[#FF497C]">Vibe</span>
           </a>
         </div>
         <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal px-1">{navlinks}</ul>
+          <ul className="menu menu-horizontal px-1 gap-8">{navlinks}</ul>
         </div>
         <div className="navbar-end">
           {user ? (
@@ -98,7 +130,7 @@ const Naver = () => {
             </>
           ) : (
             <Link to={'/login'}>
-              <a className="btn">Login</a>
+              <a className="btn bg-[#FF497C] text-white">Login</a>
             </Link>
           )}
         </div>

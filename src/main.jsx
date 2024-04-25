@@ -7,6 +7,9 @@ import Home from './Pages/Home';
 import Login from './Compment/FormReleted/Login';
 import Register from './Compment/FormReleted/Register';
 import AuthProvider from './AuthProvider/AuthProvider';
+import TouristSport from './Pages/TouristSport';
+import AddToursSorts from './Pages/AddToursSorts';
+import MYLIst from './Pages/MYLIst';
 const router = createBrowserRouter([
   {
     path: '/',
@@ -23,6 +26,18 @@ const router = createBrowserRouter([
       {
         path: '/register',
         element: <Register></Register>,
+      },
+      {
+        path: '/allTurist',
+        element: <TouristSport></TouristSport>,
+      },
+      {
+        path: '/addTurist',
+        element: <AddToursSorts></AddToursSorts>,
+      },
+      {
+        path: '/myList',
+        element: <MYLIst></MYLIst>,
       },
     ],
   },
