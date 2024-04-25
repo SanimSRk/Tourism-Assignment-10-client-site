@@ -57,7 +57,10 @@ const Naver = () => {
               {navlinks}
             </ul>
           </div>
-          <a className="btn btn-ghost text-xl">TourVibe</a>
+          <a className="btn text-2xl gap-0 font-bold">
+            {' '}
+            Tour<span className="text-[#FF497C]">Vibe</span>
+          </a>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">{navlinks}</ul>
