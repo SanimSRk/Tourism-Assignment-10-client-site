@@ -1,6 +1,10 @@
+import { useContext } from 'react';
 import { useForm } from 'react-hook-form';
+import { AuthContext } from '../AuthProvider/AuthProvider';
 
 const AddToursSorts = () => {
+  const { user } = useContext(AuthContext);
+
   const {
     register,
     handleSubmit,
@@ -10,11 +14,50 @@ const AddToursSorts = () => {
 
   const onSubmit = data => {
     console.log(data);
+    const {
+      TouristsSoprt,
+      countryName,
+      location,
+      description,
+      averageCost,
+      seasonality,
+      travelTime,
+      totaVisitorsPerYea,
+      image,
+    } = data;
+    const email = user.email;
+    const userName = user.displayName;
+
+    const products = {
+      TouristsSoprt,
+      countryName,
+      location,
+      description,
+      averageCost,
+      seasonality,
+      travelTime,
+      totaVisitorsPerYea,
+      image,
+      email,
+      userName,
+    };
+
+    fetch('http://localhost:5000/products', {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json',
+      },
+      body: JSON.stringify(products),
+    })
+      .then(res => res.json())
+      .then(data => {
+        console.log(data);
+      });
   };
   return (
     <div>
-      <div className="w-2/3 mx-auto my-[100px] shadow-lg py-[72px] px-[100px]">
-        <h2 className="text-3xl font-bold text-center mt-3">
+      <div className=" lg:w-2/3 mx-auto my-[40px] md:my-[70px] lg:my-[100px] shadow-lg md:py-[40px] lg:py-[72px] py-8 px-5 md:px-[60px] lg:px-[100px]">
+        <h2 className="text-3xl font-bold text-center mb-8">
           <span className="text-[#FF497C]">Add</span> Your Product
         </h2>
         <form onSubmit={handleSubmit(onSubmit)}>
@@ -70,7 +113,7 @@ const AddToursSorts = () => {
               />
             </div>
           </div>
-          <div className="flex gap-4 my-2">
+          <div className="flex gap-4">
             <div className="form-control w-1/2">
               <label className="label">
                 <span className="label-text">Average cost</span>
@@ -92,11 +135,11 @@ const AddToursSorts = () => {
                 placeholder="Enter seasonality "
                 className="input input-bordered"
                 required
-                {...register('seasonality ', { required: true })}
+                {...register('seasonality', { required: true })}
               />
             </div>
           </div>
-          <div className="flex gap-4">
+          <div className="flex gap-4 my-2">
             <div className="form-control w-1/2">
               <label className="label">
                 <span className="label-text">Travel time</span>

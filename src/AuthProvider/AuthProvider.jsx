@@ -40,9 +40,11 @@ const AuthProvider = ({ children }) => {
   };
 
   const googleLoginuser = () => {
+    setLodings(true);
     return signInWithPopup(auth, googlePoviders);
   };
   const gitHubLiogin = () => {
+    setLodings(true);
     return signInWithPopup(auth, gitHubProviders);
   };
 
