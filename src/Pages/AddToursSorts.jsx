@@ -1,6 +1,7 @@
 import { useContext } from 'react';
 import { useForm } from 'react-hook-form';
 import { AuthContext } from '../AuthProvider/AuthProvider';
+import Swal from 'sweetalert2';
 
 const AddToursSorts = () => {
   const { user } = useContext(AuthContext);
@@ -52,6 +53,13 @@ const AddToursSorts = () => {
       .then(res => res.json())
       .then(data => {
         console.log(data);
+        if (data.TouristsSoprt) {
+          Swal.fire({
+            title: 'Good job!',
+            text: 'You have successfully Login!',
+            icon: 'success',
+          });
+        }
       });
   };
   return (
@@ -94,7 +102,7 @@ const AddToursSorts = () => {
               </label>
               <input
                 type="text"
-                placeholder="Enter your brand name "
+                placeholder="Enter your location "
                 className="input input-bordered"
                 required
                 {...register('location', { required: true })}
