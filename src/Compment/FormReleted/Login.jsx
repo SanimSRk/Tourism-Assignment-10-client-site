@@ -6,7 +6,8 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../AuthProvider/AuthProvider';
 import Swal from 'sweetalert2';
 const Login = () => {
-  const { handileLogin } = useContext(AuthContext);
+  const { handileLogin, googleLoginuser, gitHubLiogin } =
+    useContext(AuthContext);
   const [errorMassge, setErrorMassage] = useState(null);
   const Navigate = useNavigate();
   const location = useLocation();
@@ -38,6 +39,35 @@ const Login = () => {
       });
   };
 
+  const hnadileGoogleLogin = () => {
+    googleLoginuser()
+      .then(result => {
+        if (result.user) {
+          Swal.fire({
+            title: 'Good job!',
+            text: 'You have successfully signWithGoogle!',
+            icon: 'success',
+          });
+          Navigate(location?.state || '/');
+        }
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  };
+
+  const handileGithubLogin = () => {
+    gitHubLiogin().then(result => {
+      if (result.user) {
+        Swal.fire({
+          title: 'Good job!',
+          text: 'You have successfully signWithGitHub!',
+          icon: 'success',
+        });
+        Navigate(location?.state || '/');
+      }
+    });
+  };
   return (
     <div>
       <div className="hero min-h-screen my-[50px]">
@@ -96,11 +126,21 @@ const Login = () => {
                 <div>or</div>
                 <div className="border border-t w-full"></div>
               </div>
-              <div className="flex gap-4  justify-center">
-                <FaGithub className="text-5xl" />
-                <FcGoogle className="text-5xl" />
-              </div>
             </form>
+            <div className="flex gap-4 mt-0 mb-4 justify-center">
+              <button
+                onClick={handileGithubLogin}
+                className="btn p-0 rounded-full"
+              >
+                <FaGithub className="text-5xl" />
+              </button>
+              <button
+                onClick={hnadileGoogleLogin}
+                className="btn p-0 rounded-full"
+              >
+                <FcGoogle className="text-5xl" />
+              </button>
+            </div>
           </div>
         </div>
       </div>

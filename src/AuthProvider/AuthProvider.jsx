@@ -1,7 +1,10 @@
 import {
+  GithubAuthProvider,
+  GoogleAuthProvider,
   createUserWithEmailAndPassword,
   onAuthStateChanged,
   signInWithEmailAndPassword,
+  signInWithPopup,
   signOut,
   updateProfile,
 } from 'firebase/auth';
@@ -13,6 +16,8 @@ export const AuthContext = createContext(null);
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [lodings, setLodings] = useState(true);
+  const googlePoviders = new GoogleAuthProvider();
+  const gitHubProviders = new GithubAuthProvider();
   const hanidleClickCreat = (email, password) => {
     setLodings(true);
     return createUserWithEmailAndPassword(auth, email, password);
@@ -33,6 +38,14 @@ const AuthProvider = ({ children }) => {
     setLodings(false);
     signOut(auth);
   };
+
+  const googleLoginuser = () => {
+    return signInWithPopup(auth, googlePoviders);
+  };
+  const gitHubLiogin = () => {
+    return signInWithPopup(auth, gitHubProviders);
+  };
+
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, currentUser => {
       if (currentUser) {
@@ -50,6 +63,8 @@ const AuthProvider = ({ children }) => {
     handileLogoutUsr,
     user,
     updataUserProfile,
+    googleLoginuser,
+    gitHubLiogin,
   };
   return (
     <>

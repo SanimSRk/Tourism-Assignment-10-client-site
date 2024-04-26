@@ -91,7 +91,7 @@ const Naver = () => {
               {navlinks}
             </ul>
           </div>
-          <img className="w-[60px]" src="/public/beach.jpg" alt="" />
+          <img className="w-[55px]" src="/public/beach.jpg" alt="" />
           <a className=" text-2xl gap-0 font-bold">
             {' '}
             Tour<span className="text-[#FF497C]">Vibe</span>

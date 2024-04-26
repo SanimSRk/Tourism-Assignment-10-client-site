@@ -8,7 +8,7 @@ const MainRote = () => {
       <div className="h-16">
         <Naver></Naver>
       </div>
-      <div className="mt-3">
+      <div className="mt-2">
         <Outlet></Outlet>
       </div>
 
