@@ -12,6 +12,7 @@ import AddToursSorts from './Pages/AddToursSorts';
 import MYLIst from './Pages/MYLIst';
 import PrivtedRouted from './PrivtedRout/PrivtedRouted';
 import AllProductDeatils from './Compment/AllProduct/AllProductDeatils';
+import FeaterdDeatils from './Compment/TurushSport/FeaterdDeatils';
 const router = createBrowserRouter([
   {
     path: '/',
@@ -45,13 +46,28 @@ const router = createBrowserRouter([
       },
       {
         path: '/myList',
-        element: <MYLIst></MYLIst>,
+        element: (
+          <PrivtedRouted>
+            {' '}
+            <MYLIst></MYLIst>
+          </PrivtedRouted>
+        ),
       },
       {
         path: '/allProductDeatils/:id',
         element: (
           <PrivtedRouted>
             <AllProductDeatils></AllProductDeatils>{' '}
+          </PrivtedRouted>
+        ),
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/products/${params.id}`),
+      },
+      {
+        path: '/featerDeatils/:id',
+        element: (
+          <PrivtedRouted>
+            <FeaterdDeatils></FeaterdDeatils>{' '}
           </PrivtedRouted>
         ),
         loader: ({ params }) =>

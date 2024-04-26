@@ -2,6 +2,7 @@ import { Link, NavLink } from 'react-router-dom';
 import userProfile from '../../assets/user-profile.png';
 import { useContext } from 'react';
 import { AuthContext } from '../../AuthProvider/AuthProvider';
+import Toggle from 'react-toggle';
 
 const Naver = () => {
   const { user, handileLogoutUsr } = useContext(AuthContext);

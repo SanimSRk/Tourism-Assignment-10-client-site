@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-
+import { FaArrowRightLong } from 'react-icons/fa6';
 const FeaterdCarts = ({ product }) => {
   const {
     TouristsSoprt,
@@ -11,6 +11,7 @@ const FeaterdCarts = ({ product }) => {
     travelTime,
     totaVisitorsPerYea,
     image,
+    _id,
   } = product;
   return (
     <div className="shadow-lg p-4 rounded-lg ">
@@ -22,9 +23,9 @@ const FeaterdCarts = ({ product }) => {
         <h2> Travel Time : {travelTime}</h2>
         <h2> Seasonality: {seasonality}</h2>
       </div>
-      <Link>
+      <Link to={`/featerDeatils/${_id}`}>
         <button className="btn w-full bg-[#FF497C] text-white">
-          View Details
+          View Details <FaArrowRightLong className="text-2xl" />
         </button>
       </Link>
     </div>

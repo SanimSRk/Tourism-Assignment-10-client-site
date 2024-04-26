@@ -1,3 +1,4 @@
+import { FaArrowRightLong } from 'react-icons/fa6';
 import { Link } from 'react-router-dom';
 
 const AllProduct = ({ product }) => {
@@ -26,7 +27,7 @@ const AllProduct = ({ product }) => {
       </div>
       <Link to={`/allProductDeatils/${_id}`}>
         <button className="btn w-full bg-[#FF497C] text-white">
-          View Details
+          View Details <FaArrowRightLong className="text-2xl" />
         </button>
       </Link>
     </div>

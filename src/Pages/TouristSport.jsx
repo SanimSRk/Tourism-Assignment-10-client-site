@@ -1,6 +1,7 @@
 import { useLoaderData } from 'react-router-dom';
 import AllProduct from '../Compment/AllProduct/AllProduct';
 import { useState } from 'react';
+import { FaSortDown } from 'react-icons/fa6';
 
 const TouristSport = () => {
   const products = useLoaderData();
@@ -32,7 +33,10 @@ const TouristSport = () => {
             role="button"
             className="btn m-1 bg-[#FF497C] text-white"
           >
-            <h2 className="font-semibold">Sort data</h2>
+            <h2 className="font-semibold flex items-center">
+              Sort by data
+              <FaSortDown className="text-xl" />
+            </h2>
           </div>
           <ul
             tabIndex={0}
