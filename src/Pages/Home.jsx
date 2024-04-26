@@ -1,10 +1,13 @@
 import Banner from '../Compment/Banner/Banner';
+import FeaterdSpots from '../Compment/TurushSport/FeaterdSpots';
 
 const Home = () => {
   return (
     <div>
       <Banner></Banner>
-      <h2>This is home section </h2>
+      <div className="my-[100px] w-[88%] mx-auto">
+        <FeaterdSpots></FeaterdSpots>
+      </div>
     </div>
   );
 };
