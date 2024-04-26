@@ -10,6 +10,8 @@ import AuthProvider from './AuthProvider/AuthProvider';
 import TouristSport from './Pages/TouristSport';
 import AddToursSorts from './Pages/AddToursSorts';
 import MYLIst from './Pages/MYLIst';
+import PrivtedRouted from './PrivtedRout/PrivtedRouted';
+import AllProductDeatils from './Compment/AllProduct/AllProductDeatils';
 const router = createBrowserRouter([
   {
     path: '/',
@@ -34,11 +36,26 @@ const router = createBrowserRouter([
       },
       {
         path: '/addTurist',
-        element: <AddToursSorts></AddToursSorts>,
+
+        element: (
+          <PrivtedRouted>
+            <AddToursSorts></AddToursSorts>
+          </PrivtedRouted>
+        ),
       },
       {
         path: '/myList',
         element: <MYLIst></MYLIst>,
+      },
+      {
+        path: '/allProductDeatils/:id',
+        element: (
+          <PrivtedRouted>
+            <AllProductDeatils></AllProductDeatils>{' '}
+          </PrivtedRouted>
+        ),
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/products/${params.id}`),
       },
     ],
   },

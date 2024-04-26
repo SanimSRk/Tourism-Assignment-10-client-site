@@ -53,13 +53,11 @@ const AddToursSorts = () => {
       .then(res => res.json())
       .then(data => {
         console.log(data);
-        if (data.TouristsSoprt) {
-          Swal.fire({
-            title: 'Good job!',
-            text: 'You have successfully Login!',
-            icon: 'success',
-          });
-        }
+        Swal.fire({
+          title: 'Good job!',
+          text: 'You have successfully product added!',
+          icon: 'success',
+        });
       });
   };
   return (
