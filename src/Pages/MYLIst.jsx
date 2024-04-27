@@ -1,5 +1,6 @@
 import { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../AuthProvider/AuthProvider';
+import { Link } from 'react-router-dom';
 
 const MYLIst = () => {
   const { user } = useContext(AuthContext);
@@ -12,6 +13,7 @@ const MYLIst = () => {
       .then(res => res.json())
       .then(data => setDatas(data));
   }, []);
+
   return (
     <div className="my-[100px] w-[88%] mx-auto">
       <h2>MY tourst List: </h2>
@@ -35,9 +37,12 @@ const MYLIst = () => {
                 <td>{pro?.TouristsSoprt}</td>
                 <td>{pro?.countryName}</td>
                 <div className="flex gap-6">
-                  <button className="btn bg-[#FF497C] text-white">
-                    Update
-                  </button>
+                  <Link to={`/updates/${pro._id}`}>
+                    {' '}
+                    <button className="btn bg-[#FF497C] text-white">
+                      Update
+                    </button>
+                  </Link>
                   <button className="btn bg-[#FF497C] text-white">
                     Delete
                   </button>

@@ -1,11 +1,22 @@
-import { useContext } from 'react';
 import { useForm } from 'react-hook-form';
-import { AuthContext } from '../AuthProvider/AuthProvider';
+import { useLoaderData } from 'react-router-dom';
 import Swal from 'sweetalert2';
 
-const AddToursSorts = () => {
-  const { user } = useContext(AuthContext);
-
+const UpdateUsers = () => {
+  const loderData = useLoaderData();
+  const {
+    TouristsSoprt,
+    countryName,
+    location,
+    description,
+    averageCost,
+    seasonality,
+    travelTime,
+    totaVisitorsPerYea,
+    image,
+    _id,
+  } = loderData;
+  console.log(loderData);
   const {
     register,
     handleSubmit,
@@ -26,10 +37,7 @@ const AddToursSorts = () => {
       totaVisitorsPerYea,
       image,
     } = data;
-    const email = user.email;
-    const userName = user.displayName;
-
-    const products = {
+    const updates = {
       TouristsSoprt,
       countryName,
       location,
@@ -39,34 +47,32 @@ const AddToursSorts = () => {
       travelTime,
       totaVisitorsPerYea,
       image,
-      email,
-      userName,
     };
-
-    fetch('http://localhost:5000/products', {
-      method: 'POST',
+    fetch(`http://localhost:5000/products/${_id}`, {
+      method: 'PUT',
       headers: {
         'content-type': 'application/json',
       },
-      body: JSON.stringify(products),
+      body: JSON.stringify(updates),
     })
       .then(res => res.json())
       .then(data => {
         console.log(data);
-        if (data.upsertedId) {
+        if (data.modifiedCount) {
           Swal.fire({
             title: 'Good job!',
-            text: 'You have successfully product added!',
+            text: 'You have successfully product Updated!',
             icon: 'success',
           });
         }
       });
   };
+
   return (
     <div>
       <div className=" lg:w-2/3 mx-auto my-[40px] md:my-[70px] lg:my-[100px] shadow-lg md:py-[40px] lg:py-[72px] py-8 px-5 md:px-[60px] lg:px-[100px]">
         <h2 className="text-3xl font-bold text-center mb-8">
-          <span className="text-[#FF497C]">Add</span> Your Product
+          <span className="text-[#FF497C]">Update</span> Your Product
         </h2>
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="flex gap-4">
@@ -76,7 +82,8 @@ const AddToursSorts = () => {
               </label>
               <input
                 type="text"
-                placeholder="Tourists_spot_name"
+                placeholder=""
+                defaultValue={TouristsSoprt}
                 className="input input-bordered"
                 required
                 {...register('TouristsSoprt', { required: true })}
@@ -88,7 +95,8 @@ const AddToursSorts = () => {
               </label>
               <input
                 type="text"
-                placeholder="Enter country_Name"
+                placeholder=""
+                defaultValue={countryName}
                 className="input input-bordered"
                 required
                 {...register('countryName', { required: true })}
@@ -102,7 +110,8 @@ const AddToursSorts = () => {
               </label>
               <input
                 type="text"
-                placeholder="Enter your location "
+                placeholder=""
+                defaultValue={location}
                 className="input input-bordered"
                 required
                 {...register('location', { required: true })}
@@ -114,7 +123,8 @@ const AddToursSorts = () => {
               </label>
               <input
                 type="text"
-                placeholder="Enter Short description"
+                placeholder=""
+                defaultValue={description}
                 className="input input-bordered"
                 required
                 {...register('description', { required: true })}
@@ -128,7 +138,8 @@ const AddToursSorts = () => {
               </label>
               <input
                 type="text"
-                placeholder="Enter average_cost "
+                placeholder=""
+                defaultValue={averageCost}
                 className="input input-bordered"
                 required
                 {...register('averageCost', { required: true })}
@@ -140,7 +151,8 @@ const AddToursSorts = () => {
               </label>
               <input
                 type="text"
-                placeholder="Enter seasonality "
+                placeholder=""
+                defaultValue={seasonality}
                 className="input input-bordered"
                 required
                 {...register('seasonality', { required: true })}
@@ -154,7 +166,8 @@ const AddToursSorts = () => {
               </label>
               <input
                 type="text"
-                placeholder="Enter travel_time"
+                placeholder=""
+                defaultValue={travelTime}
                 className="input input-bordered"
                 required
                 {...register('travelTime', { required: true })}
@@ -166,7 +179,8 @@ const AddToursSorts = () => {
               </label>
               <input
                 type="text"
-                placeholder="Enter totaVisitorsPerYea"
+                placeholder=""
+                defaultValue={totaVisitorsPerYea}
                 className="input input-bordered"
                 required
                 {...register('totaVisitorsPerYea', { required: true })}
@@ -180,7 +194,8 @@ const AddToursSorts = () => {
             </label>
             <input
               type="text"
-              placeholder="Enter image url......."
+              placeholder=""
+              defaultValue={image}
               className="input input-bordered"
               required
               {...register('image', { required: true })}
@@ -189,7 +204,7 @@ const AddToursSorts = () => {
           <input
             className="text-white btn w-full mt-6 bg-[#FF497C]"
             type="submit"
-            value="Add Product"
+            value="Update Product"
           />
         </form>
       </div>
@@ -197,4 +212,4 @@ const AddToursSorts = () => {
   );
 };
 
-export default AddToursSorts;
+export default UpdateUsers;

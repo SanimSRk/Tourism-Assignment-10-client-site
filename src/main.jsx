@@ -13,6 +13,7 @@ import MYLIst from './Pages/MYLIst';
 import PrivtedRouted from './PrivtedRout/PrivtedRouted';
 import AllProductDeatils from './Compment/AllProduct/AllProductDeatils';
 import FeaterdDeatils from './Compment/TurushSport/FeaterdDeatils';
+import UpdateUsers from './Compment/FormReleted/UpdateUsers';
 const router = createBrowserRouter([
   {
     path: '/',
@@ -70,6 +71,12 @@ const router = createBrowserRouter([
             <FeaterdDeatils></FeaterdDeatils>{' '}
           </PrivtedRouted>
         ),
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/products/${params.id}`),
+      },
+      {
+        path: '/updates/:id',
+        element: <UpdateUsers></UpdateUsers>,
         loader: ({ params }) =>
           fetch(`http://localhost:5000/products/${params.id}`),
       },
