@@ -53,7 +53,8 @@ const AddToursSorts = () => {
       .then(res => res.json())
       .then(data => {
         console.log(data);
-        if (data.upsertedId) {
+
+        if (data.insertedId) {
           Swal.fire({
             title: 'Good job!',
             text: 'You have successfully product added!',

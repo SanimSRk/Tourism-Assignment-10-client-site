@@ -14,9 +14,11 @@ import PrivtedRouted from './PrivtedRout/PrivtedRouted';
 import AllProductDeatils from './Compment/AllProduct/AllProductDeatils';
 import FeaterdDeatils from './Compment/TurushSport/FeaterdDeatils';
 import UpdateUsers from './Compment/FormReleted/UpdateUsers';
+import NotFound from './ErrorRouter/NotFound';
 const router = createBrowserRouter([
   {
     path: '/',
+    errorElement: <NotFound></NotFound>,
     element: <MainRote></MainRote>,
     children: [
       {
