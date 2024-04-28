@@ -1,5 +1,6 @@
 import Banner from '../Compment/Banner/Banner';
 import FeaterdSpots from '../Compment/TurushSport/FeaterdSpots';
+import CountryData from '../Country/CountryData';
 import ExtaSecton from '../ExtaSection/ExtaSecton';
 import ExtaSpost from '../ExtaSection/ExtaSpost';
 
@@ -12,6 +13,7 @@ const Home = () => {
         <FeaterdSpots></FeaterdSpots>
       </div>
       <ExtaSpost></ExtaSpost>
+      <CountryData></CountryData>
     </div>
   );
 };

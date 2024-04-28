@@ -15,6 +15,7 @@ import AllProductDeatils from './Compment/AllProduct/AllProductDeatils';
 import FeaterdDeatils from './Compment/TurushSport/FeaterdDeatils';
 import UpdateUsers from './Compment/FormReleted/UpdateUsers';
 import NotFound from './ErrorRouter/NotFound';
+import AllCountry from './Country/AllCountry';
 const router = createBrowserRouter([
   {
     path: '/',
@@ -81,6 +82,12 @@ const router = createBrowserRouter([
         element: <UpdateUsers></UpdateUsers>,
         loader: ({ params }) =>
           fetch(`http://localhost:5000/products/${params.id}`),
+      },
+      {
+        path: '/allCountrys/:countryName',
+        element: <AllCountry></AllCountry>,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/allcountry/${params.countryName}`),
       },
     ],
   },
