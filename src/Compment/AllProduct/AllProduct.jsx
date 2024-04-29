@@ -19,7 +19,7 @@ const AllProduct = ({ product }) => {
     <div className="shadow-lg p-4 rounded-lg ">
       <img src={image} alt="" />
       <h2>Turist sport is :{TouristsSoprt}</h2>
-      <h2 className="my-3">Average Cost : {averageCost}</h2>
+      <h2 className="my-3">Average Cost : ${averageCost}</h2>
       <h2> Total Visitors PerYear :{totaVisitorsPerYea} </h2>
       <div className="flex justify-between my-3">
         <h2> Travel Time : {travelTime}</h2>

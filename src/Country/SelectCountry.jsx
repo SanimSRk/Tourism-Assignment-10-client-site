@@ -1,6 +1,7 @@
-import { Link } from 'react-router-dom';
 import { FaArrowRightLong } from 'react-icons/fa6';
-const FeaterdCarts = ({ product }) => {
+import { Link } from 'react-router-dom';
+
+const SelectCountry = ({ seltctCountry }) => {
   const {
     TouristsSoprt,
     countryName,
@@ -12,9 +13,9 @@ const FeaterdCarts = ({ product }) => {
     totaVisitorsPerYea,
     image,
     _id,
-  } = product;
+  } = seltctCountry;
   return (
-    <div className="shadow-lg p-4 rounded-lg ">
+    <div className="shadow-lg p-6 rounded-lg">
       <img src={image} alt="" />
       <h2>Turist sport is :{TouristsSoprt}</h2>
       <h2 className="my-3">Average Cost : ${averageCost}</h2>
@@ -23,8 +24,8 @@ const FeaterdCarts = ({ product }) => {
         <h2> Travel Time : {travelTime}</h2>
         <h2> Seasonality: {seasonality}</h2>
       </div>
-      <p className="mb-3">location : {location}</p>
-      <Link to={`/featerDeatils/${_id}`}>
+      <p className="font-semibold mb-3">location : {location}</p>
+      <Link to={`/deatilsCountry/${_id}`}>
         <button className="btn w-full bg-[#FF497C] text-white">
           View Details <FaArrowRightLong className="text-2xl" />
         </button>
@@ -33,4 +34,4 @@ const FeaterdCarts = ({ product }) => {
   );
 };
 
-export default FeaterdCarts;
+export default SelectCountry;

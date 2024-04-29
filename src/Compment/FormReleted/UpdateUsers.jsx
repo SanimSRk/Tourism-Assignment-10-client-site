@@ -93,14 +93,22 @@ const UpdateUsers = () => {
               <label className="label">
                 <span className="label-text">Country Name</span>
               </label>
-              <input
-                type="text"
-                placeholder=""
-                defaultValue={countryName}
-                className="input input-bordered"
-                required
-                {...register('countryName', { required: true })}
-              />
+              <div className="">
+                <select
+                  className="select select-bordered w-full max-w-xs"
+                  {...register('countryName', { required: true })}
+                >
+                  <option disabled selected>
+                    Select your country
+                  </option>
+                  <option>bangladesh</option>
+                  <option>thailand</option>
+                  <option>indonesia</option>
+                  <option>malaysia</option>
+                  <option>vietnam</option>
+                  <option>cambodia</option>
+                </select>
+              </div>
             </div>
           </div>
           <div className="flex gap-4 my-2">

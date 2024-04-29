@@ -2,6 +2,7 @@ import { Link, NavLink } from 'react-router-dom';
 import userProfile from '../../assets/user-profile.png';
 import { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../AuthProvider/AuthProvider';
+import { Tooltip } from 'react-tooltip';
 
 const Naver = () => {
   const { user, handileLogoutUsr } = useContext(AuthContext);
@@ -158,26 +159,18 @@ const Naver = () => {
                   role="button"
                   className="btn btn-ghost btn-circle avatar"
                 >
-                  <div className="w-10 rounded-full">
+                  <div className="w-10 rounded-full " id="clickable">
                     <img src={user?.photoURL || userProfile} />
                   </div>
                 </div>
-                <ul
-                  tabIndex={0}
-                  className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
-                >
-                  <li>
-                    <a className="justify-between">
-                      {user?.displayName || 'Name not found'}
-                    </a>
-                  </li>
-                  <li>
-                    <a>Settings</a>
-                  </li>
-                  <li onClick={handileLogut}>
-                    <a>Logout</a>
-                  </li>
-                </ul>
+                <Tooltip anchorSelect="#clickable" clickable>
+                  <h2 className=" text-xl">
+                    {user?.displayName || 'Name not found'}
+                  </h2>
+                  <button className="text-xl font-bold" onClick={handileLogut}>
+                    Logout
+                  </button>
+                </Tooltip>
               </div>
             </>
           ) : (
