@@ -16,7 +16,7 @@ const AllProduct = ({ product }) => {
   } = product;
 
   return (
-    <div className="shadow-lg p-4 rounded-lg ">
+    <div className="shadow-lg p-4 rounded-lg grid items-end ">
       <img src={image} alt="" />
       <h2>Turist sport is :{TouristsSoprt}</h2>
       <h2 className="my-3">Average Cost : ${averageCost}</h2>

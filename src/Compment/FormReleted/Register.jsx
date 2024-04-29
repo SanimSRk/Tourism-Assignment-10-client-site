@@ -9,7 +9,7 @@ const Register = () => {
     useContext(AuthContext);
   const locations = useLocation();
   const Navigate = useNavigate();
-  const [errorMassge, setErrorMassage] = useState(null);
+  const [errorMassge, setErrorMassage] = useState('');
 
   const {
     register,
@@ -22,10 +22,13 @@ const Register = () => {
     console.log(fullName);
     if (password.length < 6) {
       setErrorMassage('Password should be at least 6 characters');
+      return;
     } else if (!/[A-Z]/.test(password)) {
       setErrorMassage('Password does not have at least one uppercase letter');
+      return;
     } else if (!/[a-z]/.test(password)) {
       setErrorMassage('Password does not have at least one lowercase letter');
+      return;
     } else {
       setErrorMassage(null);
     }

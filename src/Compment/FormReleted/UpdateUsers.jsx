@@ -48,7 +48,7 @@ const UpdateUsers = () => {
       totaVisitorsPerYea,
       image,
     };
-    fetch(`http://localhost:5000/products/${_id}`, {
+    fetch(`https://tour-vibe-server-site.vercel.app/products/${_id}`, {
       method: 'PUT',
       headers: {
         'content-type': 'application/json',

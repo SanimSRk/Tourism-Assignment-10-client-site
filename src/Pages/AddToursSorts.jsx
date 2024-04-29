@@ -44,7 +44,7 @@ const AddToursSorts = () => {
       userName,
     };
 
-    fetch('http://localhost:5000/products', {
+    fetch('https://tour-vibe-server-site.vercel.app/products', {
       method: 'POST',
       headers: {
         'content-type': 'application/json',

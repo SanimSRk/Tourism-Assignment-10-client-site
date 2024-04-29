@@ -35,9 +35,9 @@ const AllProductDeatils = () => {
             <h2> Travel Time : {travelTime}</h2>
             <h2> Seasonality: {seasonality}</h2>
           </div>
-          <div className="flex justify-between mt-6 items-center">
+          <div className="">
             <h2>Location : {location}</h2>
-            <button className="btn bg-[#FF497C] text-white">
+            <button className="btn mt-6 bg-[#FF497C] text-white">
               view details
             </button>
           </div>

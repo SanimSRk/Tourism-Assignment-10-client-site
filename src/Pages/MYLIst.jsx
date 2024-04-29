@@ -10,7 +10,7 @@ const MYLIst = () => {
   const [datas, setDatas] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/myProducts/${email}`)
+    fetch(`https://tour-vibe-server-site.vercel.app/myProducts/${email}`)
       .then(res => res.json())
       .then(data => setDatas(data));
   }, []);
@@ -26,7 +26,7 @@ const MYLIst = () => {
       confirmButtonText: 'Yes, delete it!',
     }).then(result => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/products/${_id}`, {
+        fetch(`https://tour-vibe-server-site.vercel.app/products/${_id}`, {
           method: 'DELETE',
         })
           .then(res => res.json())

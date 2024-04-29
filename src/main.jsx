@@ -17,6 +17,8 @@ import UpdateUsers from './Compment/FormReleted/UpdateUsers';
 import NotFound from './ErrorRouter/NotFound';
 import AllCountry from './Country/AllCountry';
 import DeatilsCountry from './Country/DeatilsCountry';
+import loders from '../public/Animation.json';
+import Lottie from 'lottie-react';
 const router = createBrowserRouter([
   {
     path: '/',
@@ -38,7 +40,8 @@ const router = createBrowserRouter([
       {
         path: '/allTurist',
         element: <TouristSport></TouristSport>,
-        loader: () => fetch('http://localhost:5000/products'),
+        loader: () =>
+          fetch('https://tour-vibe-server-site.vercel.app/products'),
       },
       {
         path: '/addTurist',
@@ -66,7 +69,9 @@ const router = createBrowserRouter([
           </PrivtedRouted>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/products/${params.id}`),
+          fetch(
+            `https://tour-vibe-server-site.vercel.app/products/${params.id}`
+          ),
       },
       {
         path: '/featerDeatils/:id',
@@ -76,7 +81,9 @@ const router = createBrowserRouter([
           </PrivtedRouted>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/products/${params.id}`),
+          fetch(
+            `https://tour-vibe-server-site.vercel.app/products/${params.id}`
+          ),
       },
       {
         path: '/updates/:id',
@@ -86,19 +93,25 @@ const router = createBrowserRouter([
           </PrivtedRouted>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/products/${params.id}`),
+          fetch(
+            `https://tour-vibe-server-site.vercel.app/products/${params.id}`
+          ),
       },
       {
         path: '/allCountrys/:countryName',
         element: <AllCountry></AllCountry>,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/allcountry/${params.countryName}`),
+          fetch(
+            `https://tour-vibe-server-site.vercel.app/allcountry/${params.countryName}`
+          ),
       },
       {
         path: '/deatilsCountry/:id',
         element: <DeatilsCountry></DeatilsCountry>,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/countryDeatils/${params.id}`),
+          fetch(
+            `https://tour-vibe-server-site.vercel.app/countryDeatils/${params.id}`
+          ),
       },
     ],
   },
@@ -107,7 +120,10 @@ const router = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <AuthProvider>
-      <RouterProvider router={router} />
+      <RouterProvider
+        router={router}
+        fallbackElement={<Lottie animationData={loders} loop={true} />}
+      />
     </AuthProvider>
   </React.StrictMode>
 );

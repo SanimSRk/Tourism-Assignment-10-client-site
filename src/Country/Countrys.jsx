@@ -5,6 +5,7 @@ const Countrys = ({ count }) => {
 
   return (
     <Link to={`/allCountrys/${countryName}`}>
+      {}
       <div className="shadow-lg p-6 rounded-lg h-full bg-base-200 grid items-end">
         <img className="w-full" src={image_url} alt="" />
         <h2 className="text-2xl font-bold my-3">{countryName}</h2>

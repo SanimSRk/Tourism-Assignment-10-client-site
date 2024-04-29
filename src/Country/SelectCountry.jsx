@@ -15,7 +15,7 @@ const SelectCountry = ({ seltctCountry }) => {
     _id,
   } = seltctCountry;
   return (
-    <div className="shadow-lg p-6 rounded-lg">
+    <div className="shadow-lg p-6 rounded-lg grid items-end h-full">
       <img src={image} alt="" />
       <h2>Turist sport is :{TouristsSoprt}</h2>
       <h2 className="my-3">Average Cost : ${averageCost}</h2>

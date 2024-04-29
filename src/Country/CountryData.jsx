@@ -1,13 +1,14 @@
 import { useEffect, useState } from 'react';
 import Countrys from './Countrys';
-
 const CountryData = () => {
   const [countrys, setCountrys] = useState([]);
 
   useEffect(() => {
-    fetch('http://localhost:5000/countrys')
+    fetch('https://tour-vibe-server-site.vercel.app/countrys')
       .then(res => res.json())
-      .then(data => setCountrys(data));
+      .then(data => {
+        setCountrys(data);
+      });
   }, []);
   return (
     <div className="my-[100px] w-[88%] mx-auto">

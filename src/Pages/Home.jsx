@@ -3,6 +3,7 @@ import FeaterdSpots from '../Compment/TurushSport/FeaterdSpots';
 import CountryData from '../Country/CountryData';
 import ExtaSecton from '../ExtaSection/ExtaSecton';
 import ExtaSpost from '../ExtaSection/ExtaSpost';
+import BannerSilder from './BannerSilder';
 
 const Home = () => {
   return (
@@ -14,6 +15,7 @@ const Home = () => {
       </div>
       <ExtaSpost></ExtaSpost>
       <CountryData></CountryData>
+      <BannerSilder></BannerSilder>
     </div>
   );
 };
