@@ -96,6 +96,7 @@ const UpdateUsers = () => {
               <div className="">
                 <select
                   className="select select-bordered w-full max-w-xs"
+                  defaultValue={countryName}
                   {...register('countryName', { required: true })}
                 >
                   <option disabled selected>

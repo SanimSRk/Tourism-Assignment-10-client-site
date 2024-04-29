@@ -10,6 +10,10 @@ const MYLIst = () => {
   const [datas, setDatas] = useState([]);
 
   useEffect(() => {
+    document.title = 'TourVibe /My List';
+  }, []);
+
+  useEffect(() => {
     fetch(`https://tour-vibe-server-site.vercel.app/myProducts/${email}`)
       .then(res => res.json())
       .then(data => setDatas(data));

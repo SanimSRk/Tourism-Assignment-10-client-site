@@ -1,5 +1,8 @@
 import { Link } from 'react-router-dom';
 import { FaArrowRightLong } from 'react-icons/fa6';
+import AOS from 'aos';
+import 'aos/dist/aos.css'; // You can also use <link> for styles
+AOS.init();
 const FeaterdCarts = ({ product }) => {
   const {
     TouristsSoprt,
@@ -14,7 +17,15 @@ const FeaterdCarts = ({ product }) => {
     _id,
   } = product;
   return (
-    <div className="shadow-lg p-4 rounded-lg h-full grid items-end">
+    <div
+      data-aos="zoom-in-down"
+      data-aos-delay="50"
+      data-aos-duration="1500"
+      data-aos-easing="ease-in-out"
+      data-aos-mirror="true"
+      data-aos-once="false"
+      className=" shadow-lg p-4 rounded-lg h-full grid items-end"
+    >
       <img src={image} alt="" />
       <h2>Turist sport is :{TouristsSoprt}</h2>
       <h2 className="my-3">Average Cost : ${averageCost}</h2>

@@ -14,7 +14,7 @@ const BannerSilder = () => {
   }, []);
 
   return (
-    <div className="w-[88%] mx-auto">
+    <div className="w-[88%] mx-auto mb-8">
       <Swiper
         spaceBetween={30}
         centeredSlides={true}

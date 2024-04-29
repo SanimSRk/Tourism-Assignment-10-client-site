@@ -4,7 +4,7 @@ const ExtaSpost = () => {
   return (
     <div className=" lg:flex shadow-lg py-4 ">
       <div className=" lg:w-[60%]">
-        <img src="/public/torush.webp" alt="" />
+        <img src="/torush.webp" alt="" />
       </div>
 
       <div className="lg:w-[40%]  py-8 md:py-12  lg:py-24 bg-[#e8604c] px-3 text-center  ">

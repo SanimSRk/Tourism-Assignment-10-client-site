@@ -1,11 +1,13 @@
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { AuthContext } from '../AuthProvider/AuthProvider';
 import Swal from 'sweetalert2';
 
 const AddToursSorts = () => {
   const { user } = useContext(AuthContext);
-
+  useEffect(() => {
+    document.title = 'TourVibe /All Tourists Spot';
+  }, []);
   const {
     register,
     handleSubmit,

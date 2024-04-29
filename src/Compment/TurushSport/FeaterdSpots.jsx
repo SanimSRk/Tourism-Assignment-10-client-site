@@ -3,6 +3,7 @@ import FeaterdCarts from './FeaterdCarts';
 
 const FeaterdSpots = () => {
   const [productData, setProductData] = useState([]);
+
   useEffect(() => {
     fetch('https://tour-vibe-server-site.vercel.app/products')
       .then(res => res.json())
